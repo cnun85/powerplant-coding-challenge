@@ -1,58 +1,56 @@
-powerplant-coding-challenge
+# Powerplant-coding-challenge
 
 It has been built using Python 3.8 with Flask.
 
+## Instalation
+There are two ways to prepare the environment for running the application. One is to install it as a Python project, the other is to run it as a docker container.
+
+### 1. Basic Python installation
+
 Install Python 3 (Python 3.8 used in this app)
 
-python.org
-Clone repository
+*It is recommended to do the next in a Virtual Environment.
 
-$ cd path/to/where/you/want/it
-$ git clone https://github.com/cnun85/powerplant-coding-challenge.git
+Make the virtual environment:
 
+	$ cd powerplant-coding-challenge
+	$ py -3 -m venv venv
+	$ venv\Scripts\activate
 
+Install dependencies:
 
-There are two main ways prepare the environment for running the application. One is to simply install it as a Python project. The other is to run it as docker container.
+	$ pip3 install -r requirements.txt
 
-Basic Python installation
+#### Running the application server:
 
-*It is recommended to do this in a Virtual Environment.
-Make the virtual environment
+	$ python3 servi.py
 
-$ cd powerplant-coding-challenge
-$ py -3 -m venv venv
-$ venv\Scripts\activate
+#### POST request:
+*Be aware, if you run the application with Docker first, the port 8888 is going to be in use by the docker container so the execution with this method will fail unless you remove it
 
-Install dependencies
+In a new terminal run the client:
 
-$ pip3 install -r requirements.txt
+	$ cd powerplant-coding-challenge
+	$ venv\Scripts\activate
+	$ python3 client.py
 
-Running the application
+If you want to exit the application:
 
-$ python3 servi.py
+	$ CTRL + C
 
-POST request
-In a new terminal run the client
-$ cd powerplant-coding-challenge
-$ venv\Scripts\activate
-$ python3 client.py
+If you want to leave the virtual environment:
 
-Exit the application
+	$ deactivate
 
-CTRL + C
+### 2. Using Docker (requires docker installation first)
+If you prefer to run the application within Docker you need to execute the .bat file called lotes.bat :
 
-Leave the virtual environment
+In a new terminal:
 
-$ deactivate
+	$ cd powerplant-coding-challenge
+	$ lotes.bat
 
-Using Docker
-If you prefer to run the application within Docker you need to execute the .bat file called lotes:
-
-in anew terminal:
-$ cd powerplant-coding-challenge
-$ lotes.bat
-
-If you want to check or extract the generated content, run the next command
+If you want to check or extract the generated content, run the next command to enter the docker bash
 
 	docker ps #to check the container_id
 	docker exec -t -i <container_id> /bin/bash
