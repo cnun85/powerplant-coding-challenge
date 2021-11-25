@@ -23,7 +23,7 @@ Install dependencies:
 
 #### Running the application server:
 
-	$ servi.py
+	$ python servi.py
 
 #### POST request:
 *Be aware, if you run the application with Docker first, the port 8888 is going to be in use by the docker container so the execution with this method will fail unless you remove it
@@ -32,7 +32,7 @@ In a new terminal run the client:
 
 	$ cd powerplant-coding-challenge
 	$ venv\Scripts\activate
-	$ client.py
+	$ python client.py
 
 If you want to exit the application:
 
