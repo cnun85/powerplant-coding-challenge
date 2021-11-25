@@ -7,6 +7,7 @@ from flask import request,jsonify, make_response
 import logging
 import pplan
 
+
 app = Flask(__name__)
 
 #logging management
@@ -45,12 +46,7 @@ def json_example():
 			aux=aux+1
 
 		print(resultado)
-		
-		
-		#response_body = {
-		#	"message": "JSON received!",
-		#	"sender": "yo"
-		#}
+
 		res = make_response(jsonify(resultado), 200)
 		app.logger.info('completed succesfully')
 		print(" ")

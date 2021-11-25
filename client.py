@@ -10,7 +10,7 @@ import os
  
 import json
  
-path = "powerplant-coding-challenge-master/example_payloads/"
+path = "example_payloads/"
 dirs = os.listdir( path )
 numero_de_salida=1
 
@@ -19,20 +19,14 @@ for file in dirs:
 	print(" ")
 	print (file)
 	print(" ")
-	f = open('powerplant-coding-challenge-master/example_payloads/'+file+'',)
+	f = open('example_payloads/'+file+'',)
 	
 	# returns JSON object as
 	# a dictionary
 	data = json.load(f)
 
-	# Iterating through the json
-	# list
-	#for i in data:
-	#	print(i)
-
 	# Closing file
 	f.close()
-
 
 	# error if no response
 	url = "http://localhost:8888/productionplan"

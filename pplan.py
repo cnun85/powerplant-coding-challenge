@@ -35,9 +35,6 @@ def merit_order(dict):
 	dict["powerplants"]=sort_powerplants_by_merit
 	return dict	
 	
-	#for i in sort_orders:
-	#	print(i[0], i[1])
-	#print(data["powerplants"])
 	
 def production(dict):
 
@@ -190,28 +187,26 @@ def production(dict):
 
 if __name__ == "__main__":
 
-	data=json_reading('payload1.json')
-	#print(list(data["powerplants"][0].keys())[-1])
-	#print(list(data["powerplants"])[-1])
+	# data=json_reading('payload1.json')
 
-	print(" ")
-	data_ordenada=merit_order(data)
-	production(data)
+	# print(" ")
+	# data_ordenada=merit_order(data)
+	# production(data)
 	
-	print(" ")
-	#print(data)
-	resultado=data["powerplants"]
-	aux=0
+	# print(" ")
+	print(data)
+	# resultado=data["powerplants"]
+	# aux=0
 
-	for i in resultado:	
-		del i["type"],i["pmin"],i["pmax"],i["efficiency"],i["merit_order"]
-		if "p" not in i:
-			resultado[aux]["p"]=0			
-		aux=aux+1
+	# for i in resultado:	
+		# del i["type"],i["pmin"],i["pmax"],i["efficiency"],i["merit_order"]
+		# if "p" not in i:
+			# resultado[aux]["p"]=0			
+		# aux=aux+1
 	
 	
-	print(" ")
-	print(resultado)
-	json_object = json.dumps(resultado, indent = 4)
-	with open("sample.json", "w") as outfile:
-		outfile.write(json_object)
+	# print(" ")
+	# print(resultado)
+	# json_object = json.dumps(resultado, indent = 4)
+	# with open("sample.json", "w") as outfile:
+		# outfile.write(json_object)
