@@ -28,21 +28,21 @@ def json_example():
     app.logger.warning('Warning level log')
     if request.is_json:
         req = request.get_json()
-        print(" ")
-        print("JSON recieved:")
-        print(" ")
-        print(req)
-        print(" ")
+        app.logger.debug("JSON recieved:")
+        app.logger.debug(req)
         
-        data_ordenada=pplan.merit_order(req)
-        data_ordenada=pplan.production(req)
-        resultado=pplan.format_result(data_ordenada)
-        res = make_response(jsonify(resultado), 200)
+        power=pplan.Powerplant(req)
+        result=power.production()
         
-        app.logger.info('completed succesfully')
-        print(" ")
-        print (res)
-        return res
+        result = make_response(jsonify(result), 200)
+        
+        app.logger.info('Operation completed succesfully:')
+        app.logger.info(result)
+        app.logger.info("\n")
+        app.logger.info("\n")
+        app.logger.info("\n")
+        
+        return result
     else:
         return make_response(jsonify({"message": "Request body must be JSON"}), 400)
         app.logger.info('Fail:Request body must be JSON')
