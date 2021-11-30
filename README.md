@@ -13,7 +13,7 @@ Install Python 3 (Python 3.8 used in this app)
 
 Make the virtual environment:
 
-	$ cd powerplant-coding-challenge
+	$ cd powerplant-coding-challenge-master
 	$ py -3 -m venv venv
 	$ venv\Scripts\activate
 
@@ -30,7 +30,7 @@ Install dependencies:
 
 In a new terminal run the client:
 
-	$ cd powerplant-coding-challenge
+	$ cd powerplant-coding-challenge-master
 	$ venv\Scripts\activate
 	$ python client.py
 
