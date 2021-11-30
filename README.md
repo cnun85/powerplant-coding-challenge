@@ -2,7 +2,7 @@
 
 It has been built using Python 3.8 with Flask.
 
-## Installation
+## Installation and exec
 There are two ways to prepare the environment for running the application. One is to install it as a Python project, the other is to run it as a docker container.
 
 ### 1. Basic Python installation
