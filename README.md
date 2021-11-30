@@ -56,5 +56,6 @@ If you want to check or extract the generated content, run the next command to e
 	docker exec -t -i <container_id> /bin/bash
 
 
-
+## Solution
+You will find the response files on the main directory and the runtime information in the runtime.log file
 
