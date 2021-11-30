@@ -23,40 +23,29 @@ def hello():
 	
 @app.route("/productionplan", methods=['POST'])
 def json_example():
-
-	app.logger.info('Info level log')
-	app.logger.warning('Warning level log')
-	if request.is_json:
-		req = request.get_json()
-		print(" ")
-		print("JSON recieved:")
-		print(" ")
-		print(req)
-		print(" ")
-		data_ordenada=pplan.merit_order(req)
-		data_ordenada=pplan.production(req)
-		resultado=data_ordenada["powerplants"]
-		
-		#formatting result
-		aux=0
-		for i in resultado:	
-			del i["type"],i["pmin"],i["pmax"],i["efficiency"],i["merit_order"]
-			if "p" not in i:
-				resultado[aux]["p"]=0			
-			aux=aux+1
-
-		print(resultado)
-
-		res = make_response(jsonify(resultado), 200)
-		app.logger.info('completed succesfully')
-		print(" ")
-		print (res)
-		return res
-	
-	else:
-	
-		return make_response(jsonify({"message": "Request body must be JSON"}), 400)
-		app.logger.info('Fail:Request body must be JSON')
+    
+    app.logger.info('Info level log')
+    app.logger.warning('Warning level log')
+    if request.is_json:
+        req = request.get_json()
+        print(" ")
+        print("JSON recieved:")
+        print(" ")
+        print(req)
+        print(" ")
+        
+        data_ordenada=pplan.merit_order(req)
+        data_ordenada=pplan.production(req)
+        resultado=pplan.format_result(data_ordenada)
+        res = make_response(jsonify(resultado), 200)
+        
+        app.logger.info('completed succesfully')
+        print(" ")
+        print (res)
+        return res
+    else:
+        return make_response(jsonify({"message": "Request body must be JSON"}), 400)
+        app.logger.info('Fail:Request body must be JSON')
 
 	
 if __name__ == "__main__":

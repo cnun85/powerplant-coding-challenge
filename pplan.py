@@ -183,6 +183,16 @@ def production(dict):
 	#print(response)
 	return dict
 	
+def format_result(dict):
+    resultado=dict["powerplants"]
+    #formatting result
+    aux=0
+    for i in resultado:
+        del i["type"],i["pmin"],i["pmax"],i["efficiency"],i["merit_order"]
+        if "p" not in i:
+            resultado[aux]["p"]=0
+        aux=aux+1
+    return resultado
 
 
 if __name__ == "__main__":
