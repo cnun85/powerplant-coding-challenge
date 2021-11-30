@@ -6,18 +6,7 @@ import json
 import logging
 
 logger = logging.getLogger('runtime.log')
- 
-def json_reading(nombre):
 
-	# Opening JSON file
-	f = open(nombre,)
-	 
-	# returns JSON object as
-	# a dictionary
-	data = json.load(f)
-	# Closing file
-	f.close()
-	return data
 
 class Powerplant:
     
@@ -48,7 +37,6 @@ class Powerplant:
         
     def production(self):
 
-        #power_load=dict["load"]
         power_load=self.load
         
         power_left=power_load
@@ -57,7 +45,6 @@ class Powerplant:
         pmin_previous=0
         pmax_previous=0
         
-        #response=dict["powerplants"]
         response=self.merit_order()
         aux=0
             
@@ -116,7 +103,7 @@ class Powerplant:
                             logger.info(power_supplied_this_powerplant)
                             logger.info(power_left)
                         elif (power_left>=i["pmin"]+pmin_previous) and (power_left<=i["pmax"]+pmax_previous): #switching on this powerplant and the previous tha can be switched on (based on pmin requisite)
-                            #ambas aportan su pmin
+                            #both give their pmin pmin
                             logger.info("this powerplant is  enough to fullfill the load %s y %s",i["name"],nombre_previous)
                             two_need=False
                             
@@ -124,7 +111,6 @@ class Powerplant:
                             power_supplied_previous_powerplant=pmin_previous#power supplied by the previous
                             power_supplied_total=power_supplied_total+power_supplied_this_powerplant+power_supplied_previous_powerplant
                             power_left=power_left-power_supplied_this_powerplant-power_supplied_previous_powerplant
-                            #print(power_left, power_supplied_total)
                             #calculating power from pmins of both
                             power_left_in_previous_powerplant=pmax_previous-pmin_previous
                             power_left_in_current_powerplant=i["pmax"]-i["pmin"]
@@ -134,11 +120,9 @@ class Powerplant:
                                 response[aux]["p"]=power_supplied_this_powerplant
                                 response[aux_previous]["p"]=power_supplied_previous_powerplant
                                 power_left=power_left-power_left
-                                #print(power_left)
 
                                 
                             else:
-                                #print(power_left, power_supplied_total)
                                 
                                 #previous powerplant supplies its pmax
                                 power_supplied_previous_powerplant=power_supplied_previous_powerplant+power_left_in_previous_powerplant
@@ -148,7 +132,6 @@ class Powerplant:
                                 power_supplied_this_powerplant=power_supplied_this_powerplant+power_left #current supplies until load complete
                                 power_supplied_total=power_supplied_total+power_left
                                 power_left=power_left-power_left
-                                #print(power_left,power_supplied_total)
                                 response[aux]["p"]=power_supplied_this_powerplant
                                 response[aux_previous]["p"]=power_supplied_previous_powerplant
                         else:
@@ -197,7 +180,6 @@ class Powerplant:
         
         resultado=self.format_result()
         
-        #print(response)
         return resultado
         
     def format_result(self):
@@ -214,26 +196,4 @@ class Powerplant:
 
 if __name__ == "__main__":
 
-	# data=json_reading('payload1.json')
-
-	# print(" ")
-	# data_ordenada=merit_order(data)
-	# production(data)
-	
-	# print(" ")
-	print(data)
-	# resultado=data["powerplants"]
-	# aux=0
-
-	# for i in resultado:	
-		# del i["type"],i["pmin"],i["pmax"],i["efficiency"],i["merit_order"]
-		# if "p" not in i:
-			# resultado[aux]["p"]=0			
-		# aux=aux+1
-	
-	
-	# print(" ")
-	# print(resultado)
-	# json_object = json.dumps(resultado, indent = 4)
-	# with open("sample.json", "w") as outfile:
-		# outfile.write(json_object)
+	print("processing")

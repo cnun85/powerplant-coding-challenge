@@ -15,11 +15,6 @@ logging.basicConfig(filename='runtime.log', level=logging.DEBUG, format=f'%(asct
 
 # methods after this line
 
-@app.route("/")
-def hello():
-    data = {"api":"rest :)"}
-    return json.dumps(data)
-	
 	
 @app.route("/productionplan", methods=['POST'])
 def json_example():
